@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df=pd.read_csv("GameSales.csv")
-
+#Box plot task
 #create the plot and its size
 fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(20, 5))
 #na sales
@@ -21,4 +21,5 @@ axes[1,1].set_title("Other Sales Box Plot")
 #show the grap
 plt.tight_layout()
 plt.show()
+
 
