@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df=pd.read_csv("../../../PycharmProjects/pythonProject2/GameSales.csv")
+df=pd.read_csv("GameSales.csv")
 #Box plot task
 def boxplot(df):
     fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(20, 5))

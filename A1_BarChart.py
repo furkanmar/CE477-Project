@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 #Bar Chart task
 df = pd.read_csv("GameSales.csv")
 
+
 fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(20, 10))
 #na sales
 axes[0, 0].bar(df.index, df["NA_Sales"])
