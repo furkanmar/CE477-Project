@@ -9,13 +9,13 @@ print(df.columns)
 df['Global_Sales'] = df['Global_Sales'].str.replace(';', '').astype(float)
 global_sales_mean = df['Global_Sales'].mean()
 
-print("Global Sales Ortalaması:", global_sales_mean)
+print("Global Sales Mean:", global_sales_mean)
 
 
 mean = global_sales_mean
 delta = mean * 0.5
 
-# Bins listesini tanımla
+
 bins = [mean - delta, mean, mean + delta, inf]
 
 labels = ['Low', 'Middle', 'High']
