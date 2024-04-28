@@ -1,7 +1,8 @@
 import pandas as pd
+from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from tabulate import tabulate
@@ -60,3 +61,12 @@ html_table = f"<h2>{title}</h2>" + tabulate(mydata, headers=head, tablefmt="html
 with open("table.html", "w") as f:
     f.write(html_table)
 
+plt.figure(figsize=(15, 10))
+plot_tree(clf, feature_names=encoded_feature_names, class_names=clf.classes_, filled=True)
+plt.savefig("decision_tree_plot.pdf")
+
+# Convert HTML table to PDF
+pdfkit.from_file('table.html', 'classifier_comparison.pdf')
+
+# Close the plots
+plt.close()
