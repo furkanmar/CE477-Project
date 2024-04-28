@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('GameSalmy es.csv')
+df = pd.read_csv('GameSales.csv')
 #minMaxScaler
 scaler = MinMaxScaler()
 #attributes for normalization

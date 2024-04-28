@@ -23,4 +23,3 @@ def boxplot(df):
     plt.show()
 
 boxplot(df)
-

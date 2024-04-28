@@ -4,6 +4,8 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
 df = pd.read_csv('GameSales.csv')
+df.rename(columns={'Global_Sales;': 'Global_Sales'}, inplace=True)
+df['Global_Sales'] = df['Global_Sales'].str.replace(';', '').astype(float)
 df_cleaned = df.dropna()
 nonNumericCol = ['Name', 'Platform', 'Genre', 'Publisher']  #take the non-numeric attribures
 nonNumericData = df_cleaned[nonNumericCol]
@@ -17,7 +19,7 @@ scaledData = standardize.fit_transform(df_encoded)
 #PCA
 pca = PCA(n_components=3)
 pcaResult = pca.fit_transform(scaledData)
-pca_df = pd.DataFrame(data=pcaResult, columns=['PC1', 'PC2', 'PC3' ]) #DATA FRAME FROM PCA results.
+pca_df = pd.DataFrame(data=pcaResult, columns=['PC1', 'PC2', 'PC3']) #DATA FRAME FROM PCA results.
 
 from mpl_toolkits.mplot3d import Axes3D
 fig = plt.figure(figsize=(10, 6))

@@ -2,6 +2,8 @@ import pandas as pd
 from scipy.stats import spearmanr
 
 df = pd.read_csv("GameSales.csv")
+df.rename(columns={'Global_Sales;': 'Global_Sales'}, inplace=True)
+df['Global_Sales'] = df['Global_Sales'].str.replace(';', '').astype(float)
 
 #if it is NaN then drop it.
 df = df.dropna(subset=['Year', 'Global_Sales'])
