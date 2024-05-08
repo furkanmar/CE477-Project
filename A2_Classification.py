@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 from sklearn.tree import plot_tree
 
-df = pd.read_csv("GameSales.csv")
+df = pd.read_csv("GameSales_dropped.csv")
 
 # in the csv file it renamed Global_Sales; and this situation cause the error we fix this  with these lines
 df.rename(columns={'Global_Sales;': 'Global_Sales'}, inplace=True)
@@ -20,7 +20,7 @@ df.dropna(inplace=True)
 feature_names = ["Year","NA_Sales","EU_Sales","JP_Sales","Other_Sales","Global_Sales"]
 
 X = df[feature_names]
-y = df["Genre"]  # target attribute
+y = df["Platform"]  # target attribute
 
 # splitting 80:20
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
