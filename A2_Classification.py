@@ -11,16 +11,28 @@ from sklearn.tree import plot_tree
 df = pd.read_csv("GameSales_dropped.csv")
 
 # in the csv file it renamed Global_Sales; and this situation cause the error we fix this  with these lines
-df.rename(columns={'Global_Sales;': 'Global_Sales'}, inplace=True)
-df['Global_Sales'] = df['Global_Sales'].str.replace(';', '').astype(float)
+#df.rename(columns={'Global_Sales;': 'Global_Sales'}, inplace=True)
+#df['Global_Sales'] = df['Global_Sales'].str.replace(';', '').astype(float)
 
 # for eliminating nan values
 df.dropna(inplace=True)
 
 feature_names = ["Year","NA_Sales","EU_Sales","JP_Sales","Other_Sales","Global_Sales"]
 
+#for platform
 X = df[feature_names]
 y = df["Platform"]  # target attribute
+
+
+"""
+#for genre
+y = df["Genre"]  # target attribute
+
+#for publisher
+y = df["Publisher"]  # target attribute
+
+
+"""
 
 # splitting 80:20
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
@@ -53,8 +65,37 @@ plt.figure(figsize=(10, 6))
 plt.bar(results.keys(), results.values(), color='skyblue')
 plt.xlabel('Classification Algorithms')
 plt.ylabel('Accuracy')
-plt.title('Performance Comparison of Classification Algorithms')
+plt.title('Performance Comparison of Classification Algorithms Platform')
 plt.ylim(0, 1)
 plt.xticks(rotation=45)
-plt.savefig('performance_comparison.pdf')  # Save the performance comparison plot as a PDF
+plt.savefig('performance_comparison_platform.pdf')  # Save the performance comparison plot as a PDF
 plt.close()  # Close the plot to prevent it from being displayed
+
+"""
+# performance comparison genre
+plt.figure(figsize=(10, 6))
+plt.bar(results.keys(), results.values(), color='skyblue')
+plt.xlabel('Classification Algorithms')
+plt.ylabel('Accuracy')
+plt.title('Performance Comparison of Classification Algorithms for Genre')
+plt.ylim(0, 1)
+plt.xticks(rotation=45)
+plt.savefig('performance_comparison_Genre.pdf')  # Save the performance comparison plot as a PDF
+plt.close()  # Close the plot to prevent it from being displayed
+
+
+
+# performance comparison publisher
+plt.figure(figsize=(10, 6))
+plt.bar(results.keys(), results.values(), color='skyblue')
+plt.xlabel('Classification Algorithms')
+plt.ylabel('Accuracy')
+plt.title('Performance Comparison of Classification Algorithms Publisher')
+plt.ylim(0, 1)
+plt.xticks(rotation=45)
+plt.savefig('performance_comparison_publisher.pdf')  # Save the performance comparison plot as a PDF
+plt.close()  # Close the plot to prevent it from being displayed
+
+
+
+"""
