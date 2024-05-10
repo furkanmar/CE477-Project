@@ -21,18 +21,18 @@ feature_names = ["Year","NA_Sales","EU_Sales","JP_Sales","Other_Sales","Global_S
 
 #for platform
 X = df[feature_names]
-y = df["Platform"]  # target attribute
+#y = df["Platform"]  # target attribute
 
 
-"""
+
 #for genre
-y = df["Genre"]  # target attribute
+#y = df["Genre"]  # target attribute
 
 #for publisher
 y = df["Publisher"]  # target attribute
 
 
-"""
+
 
 # splitting 80:20
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
@@ -70,6 +70,13 @@ plt.ylim(0, 1)
 plt.xticks(rotation=45)
 plt.savefig('performance_comparison_platform.pdf')  # Save the performance comparison plot as a PDF
 plt.close()  # Close the plot to prevent it from being displayed
+root_node = decision_tree_model.tree_
+print("Root Node Features:")
+print(f"Feature: {feature_names[root_node.feature[0]]}")
+print(f"Threshold: {root_node.threshold[0]}")
+print(f"Gini: {root_node.impurity[0]}")
+print(f"Samples: {root_node.n_node_samples[0]}")
+print(f"Value: {root_node.value[0]}")
 
 """
 # performance comparison genre
