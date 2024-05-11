@@ -7,7 +7,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
 import matplotlib.pyplot as plt
 from sklearn import tree
 # Load the dataset
-file_path = 'GameSales_Standardized.csv'
+file_path = 'GameSales_dropped.csv'
 game_sales_data = pd.read_csv(file_path)
 #game_sales_data.rename(columns={'Global_Sales;': 'Global_Sales'}, inplace=True)
 #game_sales_data['Global_Sales'] = game_sales_data['Global_Sales'].str.replace(';', '').astype(float)
@@ -63,6 +63,8 @@ plt.ylabel('Predicted Values')
 plt.title('Linear Regression: Actual vs Predicted Values')
 plt.legend()
 plt.grid(True)
+#plt.savefig('Linear Regression: Actual vs Predicted Values.pdf')
+#plt.close()
 plt.show()
 
 # Residual plot for Linear Regression
@@ -74,18 +76,24 @@ plt.xlabel('Actual Values')
 plt.ylabel('Residuals')
 plt.title('Linear Regression: Residuals Plot')
 plt.grid(True)
+#plt.savefig('Linear Regression: Residuals Plot.pdf')
+#plt.close()
 plt.show()
 
 # Decision Tree visualization
 plt.figure(figsize=(20, 10))
 tree.plot_tree(tree_model, filled=True, feature_names=X.columns, max_depth=3, fontsize=10) #fpr maximum 3 features
 plt.title('Decision Tree Regressor Visualization (first 3 levels)')
-plt.show()
+plt.savefig('Decision Tree Regressor Visualization (first 3 levels).pdf')
+plt.close()
+#plt.show()
 
 plt.figure(figsize=(30, 20))
 tree.plot_tree(tree_model, filled=True, feature_names=X.columns,max_depth=20, fontsize=10)
 plt.title('Complete Decision Tree Regressor Visualization')
-plt.show()
+plt.savefig('Complete Decision Tree Regressor Visualization.pdf')
+plt.close()
+#plt.show()
 
 
 
@@ -97,4 +105,6 @@ plt.title('Feature Importances by Decision Tree Regressor')
 plt.bar(range(X_train.shape[1]), importances[indices], color="green", align="center")
 plt.xticks(range(X_train.shape[1]), X.columns[indices], rotation=90)
 plt.xlim([-1, X_train.shape[1]])
-plt.show()
+plt.savefig('Feature Importances by Decision Tree Regressor.pdf')
+plt.close()
+#plt.show()
